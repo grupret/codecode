@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7.2
+    ports:
+      - "6380:6379"
+
+  mongo:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+
+  elasticsearch:
+    image: elasticsearch:8.12.1
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+
+  neo4j:
+    image: neo4j:5.19
+    environment:
+      - NEO4J_AUTH=neo4j/test
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+
+  kafka:
+    image: bitnami/kafka:latest
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    ports:
+      - "2181:2181"
+
+  postgres:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - "5432:5432"
+
+  timescaledb:
+    image: timescale/timescaledb:latest-pg14
+    environment:
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - "5433:5432"
+
+  influxdb:
+    image: influxdb:2.7
+    ports:
+      - "8086:8086"
+
+  chromadb:
+    image: ghcr.io/chroma-core/chroma:latest
+    ports:
+      - "8000:8000"
+
+  postgis:
+    image: postgis/postgis
+    ports:
+      - "5444:5432"
+
