@@ -14,7 +14,7 @@ public class Iterator {
 
         names.forEach(System.out::println);
 //Statement will cause a mutation ( a side effect and go away)
-//In functional interfaces/ progreamming we oftern using an expression intead of the statements
+//In functional interfaces/ programming we're often using an expression instead of the statements
 
         System.out.println("================= Take 2 ===========================");
 
@@ -23,7 +23,7 @@ public class Iterator {
                 .stream()
                 .takeWhile(name -> !name.equals("Bob"))
                 .forEach(System.out::println);
-// take while is functional programming implementation of imperetive type
+// take while is functional programming implementation of imperative type
 
         System.out.println("================= Take 3 ===========================");
 names

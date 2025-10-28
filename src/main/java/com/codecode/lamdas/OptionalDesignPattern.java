@@ -6,7 +6,7 @@ import java.util.Optional;
 //TODO: 1. Return a reference id the value will always exist
 //TODO: 2. Return an Optional<T> if the value may or may not exists
 //TODO: 3. Do not use Optional<T> for fields
-//TODO: 4. Do not use Optional<T> for netrhord parameters
+//TODO: 4. Do not use Optional<T> for method parameters
 public class OptionalDesignPattern {
     public static Optional<String> getName(long id) {
         if (id == 0) {
